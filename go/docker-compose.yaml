@@ -1,0 +1,30 @@
+version: '1.0'
+
+services:
+  db:
+    image: postgres
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    command: postgres -c search_path=game
+
+  app:
+    build: .
+    container_name: go-gin-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - TZ=Asia/Shanghai
+
+volumes:
+  postgres_data:
+
