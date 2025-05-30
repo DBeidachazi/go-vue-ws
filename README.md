@@ -2,6 +2,7 @@
 1.前端使用Vue3和Typescript，用axios进行http请求， 使用echarts绘制图表，Websocket进行实时数据传输<br>
 2.后端使用Gin，ORM使用Gorm，数据库使用Postgresql，使用/gorilla/websocket进行Websocket通信<br>
 3.进入./go目录，执行下面命令运行软件，端口占用5432和3000，数据库初始化在./go/init.sql，运行docker-compose后自动初始化数据库<br>
+
 ```bash
 docker-compose up --build
 ```
